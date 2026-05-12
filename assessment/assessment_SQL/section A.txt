@@ -1,0 +1,65 @@
+1. Explain how relational databases help maintain accuracy in expense records.
+--
+Relational databases store data in separate but connected tables such as 
+users, categories, and expenses. These tables are linked using keys like 
+user_id and category_id. This structure reduces duplication and ensures 
+that every expense is associated with a valid user and category. As a 
+result, the data remains accurate, organized, and easy to retrieve.
+
+2. Why are constraints important in personal finance data?
+--
+Constraints enforce rules on the data entered into the database.
+Examples:
+
+-PRIMARY KEY ensures each record is unique.
+-FOREIGN KEY ensures references to valid users and categories.
+-NOT NULL prevents missing essential values such as amount or date.
+-UNIQUE avoids duplicate emails.
+
+These constraints protect financial records from errors and maintain 
+data integrity.
+
+3. How does GROUP BY help analyze spending patterns?
+--
+GROUP BY combines rows with the same value and allows aggregate 
+calculations such as SUM().
+Example uses:
+-Total spending by category
+-Total spending by user
+-Monthly expense totals
+
+Example:
+[SELECT category_id, SUM(amount)
+ FROM expenses
+ GROUP BY category_id;]
+
+This helps users identify where most of their money is being spent
+
+4. Explain a scenario where rollback is required during expense entry.
+--
+Suppose a user accidentally enters a rent expense of ₹50,000 instead 
+of ₹5,000.
+The transaction begins, but before committing, the user notices the 
+mistake. By executing ROLLBACK, the incorrect entry is cancelled and 
+the database returns to its previous state.
+This prevents inaccurate financial data from being saved.
+
+5. How do views help users track monthly expenses efficiently? 
+--
+A view is a saved query that can present filtered or summarized data.
+For example, a monthly expense view may display:
+-User name
+-Category
+-Total monthly spending
+Users can query the view directly without rewriting complex joins and 
+aggregations each time. This simplifies reporting and improves efficiency.
+
+6. Why use triggers for automatic category or balance updates? 
+--
+Triggers run automatically when data changes.
+Examples:
+-Update a monthly balance after inserting a new expense
+-Log deleted expenses into an audit table
+-Assign a default category when one is not provided
+Triggers automate repetitive tasks, reduce manual errors, and ensure 
+related data stays synchronized.
