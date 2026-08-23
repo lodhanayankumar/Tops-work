@@ -1,3 +1,6 @@
+<%--  1.Create a JSP page called header.jsp that displays a welcome message and another called footer.jsp that shows a copyright notice, then use 
+<jsp:include> in a main.jsp page to include both header and footer dynamically.
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
