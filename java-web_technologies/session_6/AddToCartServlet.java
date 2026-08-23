@@ -1,3 +1,5 @@
+/*2.Build a simple login form (login.html) and a LoginServlet that uses HttpSession to store the username after successful login; display a welcome message using
+the session value on a dashboard.jsp page.*/
 package test13;
 
 import java.io.IOException;
