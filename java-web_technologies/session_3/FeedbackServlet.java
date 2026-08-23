@@ -25,10 +25,14 @@ public class FeedbackServlet extends HttpServlet {
         String feedback = request.getParameter("feedback");
 
         PrintWriter out = response.getWriter();
+        if (userName==null||userName.trim().isEmpty()||orderId==null||orderId.trim().isEmpty()||feedback==null||feedback.trim().isEmpty()) {
+            out.println("Error: Please fill in all fields.");
 
-        out.println("User Name: " + userName);
-        out.println("Order ID: " + orderId);
-        out.println("Feedback: " + feedback);
-        out.println("Thank You");
+        } else {
+            out.println("User Name: " + userName);
+            out.println("Order ID: " + orderId);
+            out.println("Feedback: " + feedback);
+            out.println("Thank You");
+        }
     }
 }
