@@ -1,3 +1,5 @@
+/*1.
+Create a JSP form named signup.jsp that asks for username, email, and password, then submit the data to a servlet for processing.*/
 package servlet02;
 
 import java.io.IOException;
