@@ -1,3 +1,6 @@
+/*2.In your servlet, perform server-side validation for the signup form: check that no field is empty, the password is at least 6 characters, 
+and the email contains '@' and ends with '.com'. If any check fails, forward back to signup.jsp with an error message.
+*/
 package servlet02;
 
 import java.io.IOException;
