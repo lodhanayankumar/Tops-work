@@ -1,3 +1,6 @@
+/*3.Modify your ProductListServlet to handle SQL exceptions and display a user-friendly error message on the JSP page if the database connection fails
+.<br><br><em><strong>Hint:</strong> Use request.setAttribute to pass error messages to the JSP.</em>
+*/
 package a12;
 
 
