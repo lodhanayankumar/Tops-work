@@ -16,23 +16,17 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+        
         String userName = request.getParameter("username");
         String orderId = request.getParameter("orderid");
         String feedback = request.getParameter("feedback");
 
         PrintWriter out = response.getWriter();
-        if (userName==null||userName.trim().isEmpty()||orderId==null||orderId.trim().isEmpty()||feedback==null||feedback.trim().isEmpty()) {
-            out.println("Error: Please fill in all fields.");
-
-        } else {
+            out.println("---Feedback--- \n");
             out.println("User Name: " + userName);
             out.println("Order ID: " + orderId);
             out.println("Feedback: " + feedback);
             out.println("Thank You");
-        }
     }
 }
