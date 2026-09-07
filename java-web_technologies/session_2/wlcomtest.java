@@ -21,10 +21,7 @@ public class wlcomtest extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 
         System.out.println("service() method is running");
-
-        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
         out.println("Welcome, User!");
     }
 
