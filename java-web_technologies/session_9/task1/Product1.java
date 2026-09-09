@@ -1,6 +1,6 @@
-
+/*1.Create a Java Bean class named Product with properties: id, name, price, and category. Add getter and setter methods for each property.
 package bean;
-
+*/
 public class Product1 {
 
     private int id;
