@@ -1,0 +1,8 @@
+5.Research Spring Framework basics and write a short note (3-4 lines) on how using Spring MVC would change the way you 
+  structure a Java web app compared to plain Servlets and JSPs.
+
+--Spring MVC provides a structured MVC architecture where controllers handle requests, services contain business logic, 
+and repositories handle database operations. Compared with plain Servlets and JSPs, Spring MVC reduces repetitive 
+code by using annotations such as `@Controller` and dependency injection. JSPs can still be used as the View, 
+while Spring manages the flow between the Controller, Model, and View. This makes Java web applications easier to 
+organize, maintain, and scale.
