@@ -9,9 +9,9 @@ public class DBConnection0_01 {
 
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = "jdbc:mysql://localhost:3306/test1";
+        String url = "jdbc:mysql://localhost:3306/test01";
         String username = "root";
-        String password = "root";
+        String password = "Nayan@2001";
 
         return DriverManager.getConnection(url, username, password);
     }
