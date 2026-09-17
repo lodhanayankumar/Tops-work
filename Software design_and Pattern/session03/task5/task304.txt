@@ -1,0 +1,9 @@
+5.Write a short comparison (3-4 lines) between session.invalidate() and JWT-based token expiry for session management, 
+  focusing on how each method handles user logout and session expiration in web apps like Myntra or Flipkart.
+Ans.
+   *session.invalidate() immediately destroys the server-side session, so the user is logged out when they click Logout.
+   *JWT-based authentication is usually stateless, so logout generally requires the client to remove the token or 
+    use a server-side revocation mechanism.
+   *With session.invalidate(), the server controls session expiration and can invalidate it directly, while a JWT 
+    normally remains usable until its expiry unless additional controls are implemented.
+   *In web apps like Myntra or Flipkart, both approaches can manage login state, but they handle logout and expiration differently.
