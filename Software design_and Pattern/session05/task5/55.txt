@@ -1,0 +1,17 @@
+5.Use GitHub Copilot in your IDE to auto-generate the core file upload and download methods for your SongUploadServlet 
+  and DownloadSongServlet. Paste the Copilot-generated code and briefly describe any changes you made to fit your use case.
+  <br><br><em><strong>Hint:</strong> Trigger Copilot suggestions by typing method signatures and comments 
+  describing the upload/download logic.</em>
+Ans.
+ GitHub Copilot was used to generate the basic upload and download methods by providing method signatures and comments 
+ describing the required logic. I modified the generated code to support MP3 files, use the application's uploads folder, 
+ validate filenames, set the correct MP3 content type, and stream downloaded files using a buffer. I also adapted the 
+ code to the Jakarta Servlet API and the requirements of this project.
+
+Changes I Made to the Copilot-Generated Code
+1. Restricted uploads to MP3 files by checking .mp3 extension.
+2. Added the uploads folder and automatically created it when it does not exist.
+3. Used MultipartConfig so the servlet can receive multipart file uploads.
+4. Added Content-Disposition: attachment in the download servlet so the browser downloads the MP3.
+5. Used an 8192-byte buffer to stream the file instead of loading the complete MP3 into memory.
+6. Adapted the code to our project by using jakarta.servlet and servlet URLs /uploadSong55 and /downloadSong55.
