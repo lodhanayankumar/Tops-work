@@ -1,0 +1,12 @@
+Task 4 — BLOB vs File Path for a Flipkart-Style Product Image Gallery
+- BLOB in Database: The actual product images are stored directly inside the MySQL database. This keeps product 
+  information and images together, making database backup and management easier.
+- BLOB disadvantage: Large images can make the database very large, which can increase backup time and affect database 
+  performance when many products and images are stored.
+- File Path on Disk: Only the image location/path is stored in MySQL, while the actual image is saved in an uploads folder. This keeps the database smaller and is suitable for storing thousands of product images.
+- File Path advantage: Images can be served directly from disk or a CDN, which can improve performance for a large product
+  gallery.
+- File Path disadvantage: Database records and image files must be managed separately. If an image is deleted or moved 
+  without updating the database, the stored path can become invalid.
+- For a Flipkart-style gallery: A common design is to store product details and image paths in MySQL and actual images 
+  on disk/object storage, because it separates database data from large image files and scales more easily.
