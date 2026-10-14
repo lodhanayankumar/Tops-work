@@ -6,25 +6,19 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        // Start Spring without XML
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext(AppConfig.class);
+// Start without XML
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        // Get PlaylistService bean
-        PlaylistService playlistService =
-                context.getBean(PlaylistService.class);
+// Get PS bean
+        PlaylistService playlistService = context.getBean(PlaylistService.class);
 
-        // Test autowired dependency
+// Test autowired 
         playlistService.showPlaylist();
 
-        // Get RecommendationService bean
-        RecommendationService recommendationService =
-                context.getBean(RecommendationService.class);
-
-        // Test @Bean configuration
+// Get RSbean
+        RecommendationService recommendationService =context.getBean(RecommendationService.class);
+// Test @Bean 
         recommendationService.showRecommendations();
-
-        // Close Spring container
         context.close();
     }
 }
