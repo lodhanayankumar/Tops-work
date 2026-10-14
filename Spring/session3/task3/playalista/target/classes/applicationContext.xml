@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- DeliveryDetails bean -->
+    <bean id="deliveryDetails"
+          class="com.example.playlist.DeliveryDetails">
+        <property name="address" value="Ahmedabad, Gujarat"/>
+    </bean>
+
+    <!-- FoodOrder bean with autowiring by name -->
+    <bean id="foodOrder"
+          class="com.example.playlist.FoodOrder"
+          autowire="byName">
+        <property name="orderId" value="ORD101"/>
+    </bean>
+
+</beans>
