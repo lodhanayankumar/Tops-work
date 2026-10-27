@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: MusicGateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: foodie-service-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/foodie/**
+
+        - id: movie-service-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/movies/**
