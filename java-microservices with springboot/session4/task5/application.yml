@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: PlaylistService
+          uri: lb://PLAYLISTSERVICE
+          predicates:
+            - Path=/playlist/**
+
+        - id: OrderService
+          uri: lb://ORDERSERVICE
+          predicates:
+            - Path=/order/**
+
+        - id: NotificationService
+          uri: lb://NOTIFICATIONSERVICE
+          predicates:
+            - Path=/notification/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
