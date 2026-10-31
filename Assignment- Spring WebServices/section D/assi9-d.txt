@@ -1,0 +1,20 @@
+**Bug Found and Improvement:**
+
+The original AI-generated code manually created JSON using string concatenation. This could produce invalid JSON when 
+the user entered double quotes or special characters. I corrected this by using Jackson ObjectMapper and ObjectNode to 
+build the JSON request safely. I also added HTTP status checking and response validation to handle API errors more 
+reliably.
+
+Write a complete Java program for a Maven project that uses Java's built-in HttpClient to call the OpenAI Chat Completions API.
+
+Requirements:
+1. Accept a prompt typed by the user in the console.
+2. Send a POST request to https://api.openai.com/v1/chat/completions.
+3. Use the Authorization: Bearer header with an API key read from an environment variable.
+4. Set Content-Type to application/json.
+5. Use Jackson ObjectMapper to create the JSON request body and parse the response.
+6. Extract only choices[0].message.content from the response.
+7. Repeat the process in a loop until the user types exit.
+8. Include proper exception handling and simple beginner-friendly comments.
+
+Provide complete runnable Java code and the required Maven dependency.
