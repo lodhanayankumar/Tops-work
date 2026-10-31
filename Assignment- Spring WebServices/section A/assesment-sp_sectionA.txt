@@ -1,0 +1,168 @@
+**Question 1:  Explain which annotations you would use on the controller class and methods to handle /menu and /menu/{id}. 
+               Why does @RestController behave differently from @Controller, and how does @PathVariable extract the dish ID?
+
+Answer:
+
+In Spring Boot, I would use the following annotations:
+- @RestController: Marks the class as a REST API controller. It returns data directly, usually in JSON format.
+- @RequestMapping("/menu"): Defines the base URL for the controller.
+- @GetMapping: Handles GET requests to retrieve all menu items.
+- @GetMapping("/{id}"): Handles GET requests to retrieve one menu item using its ID.
+- @PathVariable: Extracts the ID value from the URL.
+
+Difference between @RestController and @Controller:
+- @Controller is generally used for MVC applications that return view names such as JSP or HTML pages.
+- @RestController is used for REST APIs and automatically serializes returned objects into JSON or other suitable 
+response formats.
+
+
+
+
+**Question 2: Describe how Spring Data JPA's CrudRepository simplifies database interactions compared to raw JDBC. What annotations 
+            must an Order class carry to be treated as a JPA entity, and what does @GeneratedValue contribute?
+
+Answer:
+
+Spring Data JPA simplifies database operations by providing ready-made CRUD methods. We do not need to write SQL queries manually for basic operations.
+
+With raw JDBC, developers generally need to:
+- Create database connections.
+- Write SQL queries.
+- Execute statements.
+- Process ResultSet.
+- Close database resources.
+With Spring Data JPA, we can use CrudRepository methods such as:
+- save() – Inserts or updates a record.
+- findAll() – Retrieves all records.
+- findById() – Retrieves a record by ID.
+- deleteById() – Deletes a record by ID.
+Required JPA annotations:
+Annotation	-Purpose
+@Entity	        Marks the Java class as a database entity.
+@Table	        Specifies the database table name.
+@Id	        Defines the primary key.
+@GeneratedValue	Automatically generates the primary key value.
+@Column	        Maps a field to a database column.
+
+
+
+
+**Question 3: Explain how Spring Security's Basic Authentication works and how you would configure it in a Spring Boot application. Additionally, describe how @Valid used alongside @NotBlank and @Min prevents invalid request data from reaching your service methods.
+
+Answer:
+
+Spring Security Basic Authentication protects application endpoints by requiring a username and password.
+
+When a user accesses a protected endpoint such as /admin/orders:
+1. The user sends a request with a username and password.
+2. The browser or client sends these credentials in the HTTP Authorization header using the Basic scheme.
+3. Spring Security checks the credentials.
+4. If they are correct, access is granted.
+5. If they are missing or incorrect, the server returns HTTP 401 Unauthorized.
+
+Request validation using annotations:
+- @Valid: Activates validation on the incoming request object.
+- @NotBlank: Ensures a String field is not null, empty, or only whitespace.
+- @Min: Ensures a numeric field is greater than or equal to the specified minimum.
+
+
+
+
+**Question 4: Explain how you would use Java's HttpClient to send a GET request to an external API and then use Jackson's ObjectMapper to deserialize the JSON response into a Java POJO. What must the POJO's field names match, and how does @JsonProperty help when JSON keys use a different naming convention?
+
+Answer:
+
+Java's built-in HttpClient is used to communicate with external REST APIs. It can send HTTP requests such as GET and POST.
+
+Jackson is a Java library used to convert JSON data into Java objects and Java objects into JSON.
+
+Steps:
+1. Create an HttpClient using HttpClient.newHttpClient().
+2. Create an HTTP GET request using HttpRequest.newBuilder().
+3. Send the request using client.send().
+4. Receive the JSON response using response.body().
+5. Create an ObjectMapper.
+6. Use readValue() to convert the JSON string into a Java POJO.
+
+What must field names match?
+
+By default, Jackson maps JSON property names to corresponding Java property names. For example, JSON key userId maps to Java property userId.
+
+How does @JsonProperty help?
+
+Sometimes the JSON key uses a different naming convention from the Java field name. We can use @JsonProperty to specify the exact JSON property name.
+
+Conclusion: HttpClient fetches external JSON data, and Jackson converts that data into Java objects that can be easily used in the application.
+
+
+
+
+**Question 5: Describe the steps required to integrate the OpenAI API into a Spring Boot REST endpoint. What HTTP method and Content-Type does the Chat Completions API expect, and how would you pass the API key securely without hardcoding it in the source file?
+
+Answer:
+
+OpenAI API can be integrated into a Spring Boot application to generate AI-based meal recommendations.
+
+For example, a user sends a dietary preference such as vegetarian or high protein, and the application returns an AI-generated meal suggestion.
+
+Steps to integrate OpenAI API:
+1. Create a Spring Boot REST endpoint using @RestController.
+2. Create a POST endpoint using @PostMapping("/recommend").
+3. Accept the user's preference using @RequestBody.
+4. Create a Java HttpClient.
+5. Build a JSON request containing the model and messages array.
+6. Send a POST request to the OpenAI Chat Completions API.
+7. Add the API key in the Authorization header.
+8. Parse the response using Jackson ObjectMapper.
+9. Extract the assistant's response from choices[0].message.content.
+10. Return the recommendation as JSON.
+HTTP method and Content-Type:
+Setting	Value
+HTTP Method	     POST
+API URL	             https://api.openai.com/v1/chat/completions
+Content-Type	     application/json
+Authorization	     Bearer YOUR_API_KEY
+
+How to store the API key securely:
+
+We should not hardcode the API key in Java source code.
+
+Instead, store it in an environment variable.
+
+Conclusion: OpenAI API integration allows a Spring Boot application to generate personalized AI recommendations based on user input.
+
+
+
+
+
+**Question 6: Explain what a prompt template is in LangChain4j and how it differs from sending a plain string to the OpenAI API. How does chaining multiple prompt steps allow you to build a more context-aware, multi-turn chatbot compared to a single API call?
+
+Answer:
+
+A prompt template is a reusable format for creating prompts. It contains placeholders that can be replaced with actual user information at runtime.
+
+In LangChain4j, prompt templates help developers create consistent prompts without writing the complete prompt again and again.
+
+2. Difference between Prompt Template and Plain String
+    -Prompt Template	                   -Plain String
+Reusable prompt structure.	        Prompt is written directly.
+Uses placeholders.	                Usually contains fixed text.
+Easy to change input values.     	Requires manually changing text.
+Helps maintain consistent prompts.	Consistency must be managed manually.
+
+3. What is Prompt Chaining?
+
+Prompt chaining means connecting multiple prompt steps. The output of one step is used as the input for the next step.
+
+4. How does Prompt Chaining help a chatbot?
+- It allows the chatbot to use previous conversation information when that context is passed between steps.
+- It can perform multiple tasks in sequence.
+- It produces more relevant answers using earlier results.
+- It helps maintain a consistent tone and response format.
+5. Single API Call vs Prompt Chaining
+
+A single API call generally handles one request using the context provided in that request.
+
+Prompt chaining connects multiple steps and can use previous results to create a more context-aware response. For a multi-turn chatbot, conversation history must also be stored or passed into later requests.
+Conclusion
+Prompt templates make prompts reusable and easy to manage, while prompt chaining connects multiple steps to build more organized and context-aware chatbots. LangChain4j helps developers create these AI-powered applications more easily.
